@@ -18,6 +18,7 @@ class UsersSeeder extends Seeder
                 'name' => 'Admin',
                 'email' => 'admin@local.test',
                 'password' => 'password',
+                'is_admin' => true,
             ],
             [
                 'name' => 'Profesor',
@@ -37,6 +38,7 @@ class UsersSeeder extends Seeder
                 [
                     'name' => $user['name'],
                     'password' => Hash::make($user['password']),
+                    'is_admin' => $user['is_admin'] ?? false,
                 ]
             );
         }

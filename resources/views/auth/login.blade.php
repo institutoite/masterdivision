@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Ingreso - Division</title>
+    <link rel="icon" href="{{ asset('images/ite.ico') }}">
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=space-grotesk:400,500,600,700" rel="stylesheet" />
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -27,7 +28,21 @@
                     </div>
                     <div class="field">
                         <label for="password">Password</label>
-                        <input id="password" class="auth-input" type="password" name="password" required autocomplete="current-password">
+                        <div class="password-field">
+                            <input id="password" class="auth-input" type="password" name="password" required autocomplete="current-password">
+                            <button type="button" class="password-toggle" data-password-toggle aria-label="Mostrar u ocultar password" aria-pressed="false">
+                                <svg class="eye-open" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M2 12s4-6 10-6 10 6 10 6-4 6-10 6-10-6-10-6Z" />
+                                    <circle cx="12" cy="12" r="3.5" />
+                                </svg>
+                                <svg class="eye-closed" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M3 3l18 18" />
+                                    <path d="M10.6 10.6a3.5 3.5 0 0 0 4.8 4.8" />
+                                    <path d="M6.5 6.5C4 8.3 2.5 10.7 2 12c1.5 2.2 5.3 6 10 6 1.6 0 3-.3 4.3-.8" />
+                                    <path d="M17.5 17.5C20 15.7 21.5 13.3 22 12c-1.5-2.2-5.3-6-10-6-1.6 0-3 .3-4.3.8" />
+                                </svg>
+                            </button>
+                        </div>
                         <x-input-error :messages="$errors->get('password')" class="muted" />
                     </div>
                     <label class="checkbox">

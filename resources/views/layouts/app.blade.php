@@ -6,6 +6,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name', 'Laravel') }}</title>
+        <link rel="icon" href="{{ asset('images/ite.ico') }}">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -16,6 +17,14 @@
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
+            @auth
+                <div class="w-full flex justify-end px-4 sm:px-6 lg:px-8 py-3">
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="btn secondary">Cerrar sesion</button>
+                    </form>
+                </div>
+            @endauth
             @include('layouts.navigation')
 
             <!-- Page Heading -->

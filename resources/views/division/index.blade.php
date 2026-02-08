@@ -4,11 +4,20 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Generador de Division</title>
+    <link rel="icon" href="{{ asset('images/ite.ico') }}">
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=space-grotesk:400,500,600,700" rel="stylesheet" />
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
+    <div style="display: flex; justify-content: flex-end; padding: 16px 24px;">
+        @auth
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit" class="btn secondary">Cerrar sesion</button>
+            </form>
+        @endauth
+    </div>
     <div class="page">
         <header class="hero">
             <div class="hero-text">
@@ -71,7 +80,7 @@
         </section>
 
         <section class="card form-card">
-            <form method="POST" action="{{ route('division.generate.all') }}" class="grid" id="all-form">
+            <form method="POST" Paction="{{ route('division.generate.all') }}" class="grid" id="all-form">
                 @csrf
                 <div class="field">
                     <label for="count_per_level">Ejercicios por nivel</label>

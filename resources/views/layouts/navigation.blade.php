@@ -15,6 +15,11 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    @if (Auth::user()->is_admin)
+                        <x-nav-link :href="route('admin.payments.index')" :active="request()->routeIs('admin.payments.*')">
+                            Pagos
+                        </x-nav-link>
+                    @endif
                 </div>
             </div>
 
@@ -34,6 +39,11 @@
                     </x-slot>
 
                     <x-slot name="content">
+                        @if (!Auth::user()->is_paid && !Auth::user()->is_admin)
+                            <x-dropdown-link :href="route('verification.pending')">
+                                Pago en verificacion
+                            </x-dropdown-link>
+                        @endif
                         <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Profile') }}
                         </x-dropdown-link>
